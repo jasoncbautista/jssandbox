@@ -17,3 +17,12 @@ jssandbox.loadScript = function(src){
    head.appendChild(script);
 
 };
+
+
+
+$(function){
+    $("#loadExternalScript").click(function(){
+        var scriptSRC = $("#scriptName").val()
+        jssandbox.loadScript(scriptSRC);
+    });
+});
