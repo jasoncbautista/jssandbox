@@ -25,4 +25,16 @@ $(function){
         var scriptSRC = $("#scriptName").val()
         jssandbox.loadScript(scriptSRC);
     });
+
+   var libTemplate =  _.template( $("#lib_entry")  ) ;
+   
+   _.each(jssandbox.Libs, function(lib){
+      var libEntry = $( libTemplate(lib)  );
+      
+         libEntry.find(".clickToAdd").click(function(){
+            jssandbox.loadScript(lib.src);
+         });
+      libEntry.appendTo($("body"));   
+   });
+   });
 });
