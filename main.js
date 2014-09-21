@@ -9,13 +9,22 @@ jssandbox.Libs = [
         , desc: "Underscore..."}
 ];
 
-jssandbox.loadScript = function(src){
-   var head= document.getElementsByTagName('head')[0];
-   var script = document.createElement('script');
+jssandbox.loadScript = function(src, name){
 
-   script.type= 'text/javascript';
-   script.src= src;
-   head.appendChild(script);
+    $("#status").text("Loading...");
+    console.log("loading...", name);
+
+
+    var head= document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+
+    script.type= 'text/javascript';
+    script.src= src;
+    head.appendChild(script);
+
+    var successMessage = "Loaded '" + name + "' successfully.";
+    $("#status").text(successMessage);
+
 };
 
 jssandbox.showScript = function(scriptObj){
@@ -27,23 +36,22 @@ $(function(){
     // Bind the click event to add a new script based on a url
     $("#loadExternalScript").click(function(){
         var scriptSRC = $("#scriptName").val()
-        jssandbox.loadScript(scriptSRC);
+        // TODO: split on / and get the last part .js
+        jssandbox.loadScript(scriptSRC, scriptSRC);
     });
 
    var libTemplate =  _.template( $("#lib_entry").html()  ) ;
 
    _.each(jssandbox.Libs, function(lib){
-      var libEntry = $( libTemplate(lib)  );
-         libEntry.find(".clickToAdd").click(function(){
-            jssandbox.loadScript(lib.src);
-         });
+       var libEntry = $( libTemplate(lib)  );
+       libEntry.find(".clickToAdd").click(function(){
+           jssandbox.loadScript(lib.src, lib.name);
+       });
+
       libEntry.appendTo($("body"));   
       libEntry.click(function(){
-           $("#status").text("Loading...");
-           console.log("loading...", lib.name);
-           jssandbox.loadScript(lib.src);
-           var successMessage = "Loaded '" + lib.name + "' successfully.";
-           $("#status").text(successMessage);
+
+           jssandbox.loadScript(lib.src, lib.name);
       });
    });
 
