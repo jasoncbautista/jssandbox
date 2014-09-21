@@ -25,6 +25,10 @@ jssandbox.loadScript = function(src, name){
     var successMessage = "Loaded '" + name + "' successfully.";
     $("#status").text(successMessage);
 
+
+    $("#loadedLibsHeader").show();
+    $("#loadedLibs").append("<div><h4> " + name + "</h4> </div>");
+
 };
 
 jssandbox.showScript = function(scriptObj){
@@ -48,7 +52,7 @@ $(function(){
            jssandbox.loadScript(lib.src, lib.name);
        });
 
-      libEntry.appendTo($("body"));   
+      libEntry.appendTo($("#libsLocal"));   
       libEntry.click(function(){
 
            jssandbox.loadScript(lib.src, lib.name);
