@@ -39,8 +39,11 @@ $(function(){
          });
       libEntry.appendTo($("body"));   
       libEntry.click(function(){
+           $("#status").text("Loading...");
            console.log("loading...", lib.name);
            jssandbox.loadScript(lib.src);
+           var successMessage = "Loaded '" + lib.name + "' successfully.";
+           $("#status").text(successMessage);
       });
    });
 

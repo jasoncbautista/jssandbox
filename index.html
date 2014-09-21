@@ -1,25 +1,46 @@
 <html>
-<head>
-<script type="text/javascript" src="libs/underscore.js"></script>
-<script type="text/javascript" src="libs/jquery2_1_1.min.js"></script>
-<script type="text/javascript" src="main.js"></script>
+    <head>
+        <script type="text/javascript" src="libs/underscore.js"></script>
+        <script type="text/javascript" src="libs/jquery2_1_1.min.js"></script>
+        <script type="text/javascript" src="main.js"></script>
 
 
-<script id="lib_entry" type="text/template">
-     <div class="lib-choice">
-        Name: <%=name%>
-        Version: <%=version%>
-     </div>
-</script>
-</head>
+        <script id="lib_entry" type="text/template">
+             <div class="lib-choice">
+                <button> Load </button>
+                Name: <%=name%>
+                Version: <%=version%>
+             </div>
+        </script>
 
-<body>
 
-    
-    <input id="scriptName"/>
-    <button id="loadExternalScript">Add </button>
-    <h3> Click to load library </h3>
+        <style>
 
-</body>
+            #status {
+                   margin: 10px;
+                   padding: 20px;
+                   background: #eee;
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <input id="scriptName"/>
+        <button id="loadExternalScript">Add </button>
+
+        <div id="status">
+             Click to load library
+        </div>
+
+        <div id="libsLocal">
+        </div>
+
+
+        <div id="loadedLibs">
+        </div>
+
+    </body>
 
 </html>
