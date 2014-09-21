@@ -2,6 +2,8 @@ var jssandbox ={};
 
 jssandbox.Libs = [
     {name: "jQuery", version: "2.1.1", src: "libs/jquery2_1_1.min.js", desc: "jQuery..."}
+    , {name: "Backbone", version: "1.1.2"
+        , src: "libs/backbone_1_1_2.js", desc: "Backbone. Depends on underscore"}
     , {name: "Underscore", version: "1.7.0", src: "libs/underscore-min_1_7_0.js"
         , desc: "Underscore..."}
 ];
